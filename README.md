@@ -5,7 +5,7 @@ POC
 ```go
 func RunTray(){
     tray, err := systray.Run("<unix-domain-socket | pipe name for IPC>",
-        systray.WithTitle("TITTLE"),)
+        systray.WithTitle("TITLE"),)
     if err != nil {
         panic(err)
     }
