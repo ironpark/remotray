@@ -6,8 +6,8 @@ import (
 	"flag"
 	"fmt"
 	"fyne.io/systray"
-	"remotray/internal"
-	"remotray/internal/ipc"
+	"github.com/ironpark/remotray/internal"
+	"github.com/ironpark/remotray/internal/ipc"
 	"sync"
 )
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fyne.io/systray"
-	"remotray/internal"
+	"github.com/ironpark/remotray/internal"
 	"sync"
 )
 
