@@ -4,8 +4,8 @@ POC
 
 ```go
 func RunTray(){
-    tray, err := systray.Run("<unix-domain-socket | pipe name for IPC>",
-        systray.WithTitle("TITLE"),)
+    tray, err := remotray.Run("<unix-domain-socket | pipe name for IPC>",
+        remotray.WithTitle("TITLE"),)
     if err != nil {
         panic(err)
     }
