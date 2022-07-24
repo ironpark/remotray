@@ -59,7 +59,7 @@ func addMenuItem(title, tooltip string) int {
 func onReady() {
 	defer fmt.Println("Ready For IPC")
 	if icon != nil && *icon != "" {
-		iconData, _ := base64.StdEncoding.DecodeString(*icon)
+		iconData, _ := base64.StdEncoding.WithPadding(base64.NoPadding).DecodeString(*icon)
 		systray.SetIcon(iconData)
 	}
 	if title != nil && *title != "" {
@@ -82,7 +82,7 @@ func onReady() {
 	ipcServer.SetMessageProcessor(internal.MsgTypeSetIcon, func(data []byte) (interface{}, error) {
 		var iconData string
 		json.Unmarshal(data, &title)
-		data, _ = base64.StdEncoding.DecodeString(iconData)
+		data, _ = base64.StdEncoding.WithPadding(base64.NoPadding).DecodeString(iconData)
 		systray.SetIcon(data)
 		return nil, nil
 	})
