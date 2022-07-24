@@ -12,12 +12,9 @@ import (
 	"io"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 	"sync"
 )
-
-var installPath = filepath.Join(os.TempDir(), "remotray")
 
 func install() {
 	file, _ := os.OpenFile(installPath, os.O_RDWR|os.O_CREATE, 0755)
