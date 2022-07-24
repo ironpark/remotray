@@ -13,3 +13,9 @@ func WithTooltip(tooltip string) Option {
 		config.tooltip = tooltip
 	}
 }
+
+func WithIcon(icon []byte) Option {
+	return func(config *Config) {
+		config.iconData = icon
+	}
+}

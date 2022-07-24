@@ -48,7 +48,7 @@ func (tray *SysTray) SetTitle(title string) {
 }
 
 func (tray *SysTray) SetIcon(data []byte) {
-	tray.ipc.WriteMessage(internal.MsgTypeSetIcon, base64.StdEncoding.EncodeToString(data))
+	tray.ipc.WriteMessage(internal.MsgTypeSetIcon, base64.StdEncoding.WithPadding(base64.NoPadding).EncodeToString(data))
 }
 
 func (tray *SysTray) SetTooltip(tooltip string) {
@@ -85,6 +85,9 @@ func Run(ipcName string, opt ...Option) (*SysTray, error) {
 	}
 	if cf.tooltip != "" {
 		args = append(args, fmt.Sprintf(`-tooltip=%s`, cf.tooltip))
+	}
+	if cf.iconData != nil {
+		args = append(args, fmt.Sprintf(`-icon=%s`, base64.StdEncoding.WithPadding(base64.NoPadding).EncodeToString(cf.iconData)))
 	}
 	cmd := exec.Command(installPath, args...)
 	stdout, _ := cmd.StdoutPipe()
